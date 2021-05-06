@@ -9,9 +9,9 @@ resources:
 - repo: self
 
 variables:
-  tag: 
-  - '$(Build.BuildId)'
-  - 'latest' 
+  tag: >
+      '$(Build.BuildId)'
+      'latest'
 
 stages:
 - stage: Build
