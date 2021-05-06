@@ -9,7 +9,9 @@ resources:
 - repo: self
 
 variables:
-  tag: '$(Build.BuildId)'
+  tag: 
+  - '$(Build.BuildId)'
+  - 'latest' 
 
 stages:
 - stage: Build
@@ -21,9 +23,11 @@ stages:
       vmImage: ubuntu-latest
     steps:
     - task: Docker@2
-      displayName: Build an image
+      displayName: Build and push an image
       inputs:
-        command: build
+        containerRegistry: 'div-acr'
+        repository: 'test'
+        command: buildAndPush
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
