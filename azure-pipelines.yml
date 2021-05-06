@@ -9,9 +9,7 @@ resources:
 - repo: self
 
 variables:
-  tag: >
-      '$(Build.BuildId)'
-      'latest'
+  tag: '$(Build.BuildId)'
 
 stages:
 - stage: Build
@@ -31,3 +29,4 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+          latest
